@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { MdRemoveCircleOutline, MdAddCircleOutline, MdDelete } from 'react-icons/md';
 import { Container, ProductTable, Total } from './styles';
 
-export default function Cart() {
+function Cart({ cart, dispatch }) {
   return (
     <Container>
       <ProductTable>
@@ -16,20 +17,21 @@ export default function Cart() {
             </tr>
           </thead>
           <tbody>
-            <tr>
+           { cart.map(product => (
+              <tr>
               <td>
-                <img src="https://static.netshoes.com.br/produtos/tenis-kappa-impact-masculino/02/D24-1738-002/D24-1738-002_detalhe2.jpg?ims=326x" alt="tenis"/>
+                <img src={product.image} alt={product.title}/>
               </td>
               <td>
-                <strong>Tênis muito massa</strong>
-                <span>R$129,90</span>
+           <strong>{product.title}</strong>
+           <span>{product.priceFromatted}</span>
               </td>
               <td>
                 <div>
                 <button type="button">
                   <MdRemoveCircleOutline size={20} color="#7159c1" />
                 </button>
-                <input type="number" readOnly value={2}/>
+                <input type="number" readOnly value={product.amount}/>
                 <button type="button">
                   <MdAddCircleOutline size={20} color="#7159c1" />
                 </button>
@@ -39,11 +41,12 @@ export default function Cart() {
                 <strong>R$258,80</strong>
               </td>
               <td>
-                <button type="button">
+                <button type="button" onClick={() => dispatch()} >
                   <MdDelete size={20} color="#7159c1" />
                 </button>
               </td>
             </tr>
+           )) }
           </tbody>
 
       </ProductTable>
@@ -61,3 +64,9 @@ export default function Cart() {
     </Container>
   );
 }
+
+const mapStateToProps = state => ({
+  cart: state.cart,
+});
+
+export default connect(mapStateToProps)(Cart);
