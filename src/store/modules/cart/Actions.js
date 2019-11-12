@@ -14,9 +14,16 @@ export function RemoveFromCart(id){
   return {type: '@Cart/REMOVE', id,}
 }
 
-export function updateAmount(id, amount){
+export function updateAmountRequest(id, amount){
   return {
-    type: '@Cart/UPDATE_AMOUNT',
+    type: '@Cart/UPDATE_AMOUNT_REQUEST',
+    id,
+    amount,
+  }
+}
+export function updateAmountSuccess(id, amount){
+  return {
+    type: '@Cart/UPDATE_AMOUNT_SUCCESS',
     id,
     amount,
   }

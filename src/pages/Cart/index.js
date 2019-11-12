@@ -5,12 +5,12 @@ import * as CartActions from '../../store/modules/cart/Actions';
 import { MdRemoveCircleOutline, MdAddCircleOutline, MdDelete } from 'react-icons/md';
 import { Container, ProductTable, Total } from './styles';
 import { formatPrice } from '../../util/format';
-function Cart({ cart, total, RemoveFromCart, updateAmount }) {
+function Cart({ cart, total, RemoveFromCart, updateAmountRequest }) {
   function increment(product){
-    updateAmount(product.id, product.amount + 1);
+    updateAmountRequest(product.id, product.amount + 1);
   }
   function decrement(product){
-    updateAmount(product.id, product.amount -1);
+    updateAmountRequest(product.id, product.amount -1);
   }
   return (
     <Container>
@@ -43,7 +43,7 @@ function Cart({ cart, total, RemoveFromCart, updateAmount }) {
                 <button type="button" onClick={() => increment(product)}>
                   <MdAddCircleOutline size={20} color="#7159c1" />
                 </button>
-                </div>s
+                </div>
               </td>
               <td>
                 <strong>{product.subtotal}</strong>

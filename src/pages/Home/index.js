@@ -17,7 +17,7 @@ import { ProductList } from './styles';
     const data = response.data.map(product => ({
       ...product,
       priceFormatted: formatPrice(product.price),
-    }))
+    }));
 
     this.setState({products: data })
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { MdShoppingBasket } from 'react-icons/md';
 import Logo from '../../assets/logo.svg';
 import { Container, Cart } from './styles';
